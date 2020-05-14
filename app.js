@@ -35,7 +35,19 @@ app.use(bodyparser.urlencoded({
 }));
 app.use(bodyparser.json());
 
-// DB Config 
+// Database connection method 1 on mongoDB Atlas
+
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://pramodshah:Prime123$5@bookstore-k6wkq.mongodb.net/bookstore?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(err => {
+  const collection = client.db("bookstore").collection("users");
+  // perform actions on the collection object
+  client.close();
+});
+
+// Database connection method 2 on mongoDB Atlas
+
 // var  db = require('./config/keys').MongoURI;
 
 // mongoose.connect(db,{useNewUrlParser:true}).then((err)=>{
@@ -47,14 +59,16 @@ app.use(bodyparser.json());
 // });
 
 
-var mongooose = require('mongoose');
-mongooose.connect('mongodb://localhost:27017/bookstore',{useNewUrlParser:true},(err)=>{
-    if(!err){
-        console.log("MongoDB connected...");
-    }else{
-        console.log(err);
-    }
-});
+// Database connection method 3 on local computer
+
+// var db = 'mongodb://localhost:27017/bookstore';
+// mongoose.connect(db,{useNewUrlParser:true},(err)=>{
+//     if(!err){
+//         console.log("MongoDB connected...");
+//     }else{
+//         console.log(err);
+//     }
+// });
 
 
 
