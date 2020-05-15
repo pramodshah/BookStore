@@ -7,9 +7,6 @@ var session = require('express-session');
 var flash = require('connect-flash');
 var passport = require('passport');
 
-require('./config/passport')(passport);
-
-
 const app = express();
 
 app.use(session({
@@ -22,6 +19,8 @@ app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());
+require('./config/passport')(passport);
+
 // global variables
 app.use((req,res,next)=>{
     res.locals.success_msg = req.flash('success_msg');
@@ -37,20 +36,8 @@ app.use(bodyparser.json());
 
 // Database connection method 1 on mongoDB Atlas
 
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://pramodshah:Prime123$5@bookstore-k6wkq.mongodb.net/bookstore?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true });
-client.connect(err => {
-  const collection = client.db("bookstore").collection("users");
-  // perform actions on the collection object
-  client.close();
-});
-
-// Database connection method 2 on mongoDB Atlas
-
-// var  db = require('./config/keys').MongoURI;
-
-// mongoose.connect(db,{useNewUrlParser:true}).then((err)=>{
+// const uri = "mongodb+srv://pramodshah:Prime123$5@bookstore-k6wkq.mongodb.net/test?retryWrites=true&w=majority";
+// mongoose.connect(uri,{useNewUrlParser:true,useUnifiedTopology:true},(err)=>{
 //     if(!err){
 //         console.log("MongoDB Connected...");
 //     }else{
@@ -59,10 +46,23 @@ client.connect(err => {
 // });
 
 
+// Database connection method 2 on mongoDB Atlas
+
+var  db = require('./config/keys').MongoURI;
+
+mongoose.connect(db,{useNewUrlParser:true,useUnifiedTopology:true}).then((err)=>{
+    if(!err){
+        console.log("MongoDB Connected...");
+    }else{
+        console.log(err);
+    }
+});
+
+
 // Database connection method 3 on local computer
 
 // var db = 'mongodb://localhost:27017/bookstore';
-// mongoose.connect(db,{useNewUrlParser:true},(err)=>{
+// mongoose.connect(db,{useNewUrlParser:true,useUnifiedTopology:true},(err)=>{
 //     if(!err){
 //         console.log("MongoDB connected...");
 //     }else{
@@ -85,6 +85,7 @@ app.use('/',require('./routes/index'));
 app.use('/users',require('./routes/users'));
 
 // server port
-app.listen(3000,function(req,res){
-    console.log("Server running on port 3000");
+const PORT = process.env.PORT || 3000;
+app.listen(PORT,function(req,res){
+    console.log("Server running on port: 3000");
 });
