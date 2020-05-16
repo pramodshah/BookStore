@@ -6,6 +6,7 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var flash = require('connect-flash');
 var passport = require('passport');
+// require('dotenv').config();
 
 const app = express();
 
@@ -48,18 +49,28 @@ app.use(bodyparser.json());
 
 // Database connection method 2 on mongoDB Atlas
 
-var  db = require('./config/keys').MongoURI;
+// var  uri = require('./config/keys').MongoURI;
 
-mongoose.connect(db,{useNewUrlParser:true,useUnifiedTopology:true}).then((err)=>{
-    if(!err){
-        console.log("MongoDB Connected...");
-    }else{
-        console.log(err);
-    }
-});
+// mongoose.connect(uri,{useNewUrlParser:true,useUnifiedTopology:true
+//  }).then((err)=>{
+//     if(!err){
+//         console.log("MongoDB Connected...");
+//     }else{
+//         console.log(err);
+//     }
+// });
+
+//  Database connection method 3 on mongoDB Atlas
+
+var  uri = require('./config/keys').MongoURI;
+mongoose.connect(uri, { useNewUrlParser: true,useUnifiedTopology:true});
+const db = mongoose.connection;
+
+db.once('open', () => console.log('Successfully connected to MongoDB'));
+db.on('error', (e) => console.log(e));
 
 
-// Database connection method 3 on local computer
+// Database connection method 4 on local computer
 
 // var db = 'mongodb://localhost:27017/bookstore';
 // mongoose.connect(db,{useNewUrlParser:true,useUnifiedTopology:true},(err)=>{
@@ -73,7 +84,7 @@ mongoose.connect(db,{useNewUrlParser:true,useUnifiedTopology:true}).then((err)=>
 
 
 // static file
-app.use('/static', express.static(path.join(__dirname,'/public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // view engine
 app.use(expressLayouts);
@@ -83,6 +94,13 @@ app.set('view engine','ejs');
 // routes
 app.use('/',require('./routes/index'));
 app.use('/users',require('./routes/users'));
+app.use('/',require('./routes/about'));
+app.use('/',require('./routes/contact'));
+app.use('/',require('./routes/features'));
+app.use('/',require('./routes/bookshelf'));
+
+
+
 
 // server port
 const PORT = process.env.PORT || 3000;
