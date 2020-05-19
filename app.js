@@ -6,7 +6,9 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var flash = require('connect-flash');
 var passport = require('passport');
-// require('dotenv').config();
+var multer = require('multer');
+
+
 
 const app = express();
 
@@ -62,29 +64,29 @@ app.use(bodyparser.json());
 
 //  Database connection method 3 on mongoDB Atlas
 
-var  uri = require('./config/keys').MongoURI;
-mongoose.connect(uri, { useNewUrlParser: true,useUnifiedTopology:true});
-const db = mongoose.connection;
+// var  uri = require('./config/keys').MongoURI;
+// mongoose.connect(uri, { useNewUrlParser: true,useUnifiedTopology:true});
+// const db = mongoose.connection;
 
-db.once('open', () => console.log('Successfully connected to MongoDB'));
-db.on('error', (e) => console.log(e));
+// db.once('open', () => console.log('Successfully connected to MongoDB'));
+// db.on('error', (e) => console.log(e));
 
 
 // Database connection method 4 on local computer
 
-// var db = 'mongodb://localhost:27017/bookstore';
-// mongoose.connect(db,{useNewUrlParser:true,useUnifiedTopology:true},(err)=>{
-//     if(!err){
-//         console.log("MongoDB connected...");
-//     }else{
-//         console.log(err);
-//     }
-// });
+var uri = 'mongodb://localhost:27017/bookstore';
+var db = mongoose.connect(uri,{useNewUrlParser:true,useUnifiedTopology:true},(err)=>{
+    if(!err){
+        console.log("Successfully connected to MongoDB.");
+    }else{
+        console.log(err);
+    }
+});
 
 
 
 // static file
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('./public'));
 
 // view engine
 app.use(expressLayouts);
@@ -98,6 +100,7 @@ app.use('/',require('./routes/about'));
 app.use('/',require('./routes/contact'));
 app.use('/',require('./routes/features'));
 app.use('/',require('./routes/bookshelf'));
+app.use('/',require('./routes/dashboard'));
 
 
 
@@ -107,3 +110,5 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT,function(req,res){
     console.log("Server running on port: 3000");
 });
+
+module.exports = db;
