@@ -13,6 +13,7 @@ router.get('/register',(req,res)=>{
     res.render('register');
 });
 
+
 // register handle
 router.post('/register',(req,res)=>{
     const {name, email, password ,password2 } = req.body;
@@ -95,5 +96,7 @@ router.post('/login',(req,res,next)=>{
 
 
 });
+
+
 
 module.exports = router;

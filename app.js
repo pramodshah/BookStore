@@ -39,14 +39,14 @@ app.use(bodyparser.json());
 
 // Database connection method 1 on mongoDB Atlas
 
-// const uri = "mongodb+srv://pramodshah:Prime123$5@bookstore-k6wkq.mongodb.net/test?retryWrites=true&w=majority";
-// mongoose.connect(uri,{useNewUrlParser:true,useUnifiedTopology:true},(err)=>{
-//     if(!err){
-//         console.log("MongoDB Connected...");
-//     }else{
-//         console.log(err);
-//     }
-// });
+const uri = "mongodb+srv://pramodshah:Prime123$5@bookstore-k6wkq.mongodb.net/test?retryWrites=true&w=majority";
+var db = mongoose.connect(uri,{useNewUrlParser:true,useUnifiedTopology:true},(err)=>{
+    if(!err){
+        console.log("MongoDB Connected...");
+    }else{
+        console.log(err);
+    }
+});
 
 
 // Database connection method 2 on mongoDB Atlas
@@ -74,24 +74,35 @@ app.use(bodyparser.json());
 
 // Database connection method 4 on local computer
 
-var uri = 'mongodb://localhost:27017/bookstore';
-var db = mongoose.connect(uri,{useNewUrlParser:true,useUnifiedTopology:true},(err)=>{
-    if(!err){
-        console.log("Successfully connected to MongoDB.");
-    }else{
-        console.log(err);
-    }
-});
+// var uri = 'mongodb://localhost:27017/bookstore';
+// var db = mongoose.connect(uri,{useNewUrlParser:true,useUnifiedTopology:true},(err)=>{
+//     if(!err){
+//         console.log("Successfully connected to MongoDB.");
+//     }else{
+//         console.log(err);
+//     }
+// });
 
 
 
-// static file
-app.use(express.static('./public'));
+
 
 // view engine
 app.use(expressLayouts);
-app.set('view engine','ejs');
-// app.set('views',path.join(__dirname,'views'));
+app.set("view engine","ejs");
+app.set('view options', { layout: 'other' });
+
+
+// static file
+app.use(express.static('public'));
+app.use(express.static('views')); 
+
+
+
+
+
+
+app.set('views',path.join(__dirname,'views'));
  
 // routes
 app.use('/',require('./routes/index'));
@@ -100,6 +111,7 @@ app.use('/',require('./routes/about'));
 app.use('/',require('./routes/contact'));
 app.use('/',require('./routes/features'));
 app.use('/',require('./routes/bookshelf'));
+app.use('/',require('./routes/book'));
 app.use('/',require('./routes/dashboard'));
 
 
