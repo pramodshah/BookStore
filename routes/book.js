@@ -67,16 +67,17 @@ router.post('/book',(req,res,next)=>{
                 newBook.bookname = req.body.bookname;
                 newBook.arthur = req.body.arthur;
                 newBook.price = req.body.price;
-                newBook.img = req.file.path;
+                
+                console.log(req.file.filename);
+                newBook.img = "uploads/"+req.file.filename;
                 newBook.save();
                 console.log(req.body);
                 res.render('book',{
                     msg:'BooK Details Uploaded.',
-                    file:req.file.path
                     
                 });
                 
-            }
+            } 
             
             
         }
@@ -90,7 +91,7 @@ router.get('/view',(req,res)=>{
             res.json(err);
         }else{
             res.render('viewbookDetails',{books});
-            console.log({book:books});
+            console.log({books:books});
         }
     });
 })

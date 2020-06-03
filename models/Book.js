@@ -4,7 +4,7 @@ var BookSchema = new mongoose.Schema({
     arthur: String,
     price: String,
     date: { type: Date, default: Date.now },
-    img:String
+    img: String
 
 
 });

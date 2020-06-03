@@ -7,6 +7,7 @@ var session = require('express-session');
 var flash = require('connect-flash');
 var passport = require('passport');
 var multer = require('multer');
+require('dotenv/config');
 
 
 
@@ -90,7 +91,8 @@ var db = mongoose.connect(uri,{useNewUrlParser:true,useUnifiedTopology:true},(er
 // view engine
 app.use(expressLayouts);
 app.set("view engine","ejs");
-app.set('view options', { layout: 'other' });
+
+// app.set('view options', { layout: 'dashboardLayout' });
 
 
 // static file
@@ -113,6 +115,8 @@ app.use('/',require('./routes/features'));
 app.use('/',require('./routes/bookshelf'));
 app.use('/',require('./routes/book'));
 app.use('/',require('./routes/dashboard'));
+app.use('/',require('./routes/category'));
+app.use('/',require('./routes/gallery'));
 
 
 

@@ -1,0 +1,24 @@
+<h1>To Upload Image on mongoDB</h1> 
+    <hr> 
+    <div> 
+        <form action="/gallery" method="POST" enctype="multipart/form-data"> 
+            
+            <div> 
+                <label for="image">Upload Image</label> 
+                <input type="file" id="image" 
+                       name="file" value="" required> 
+            </div> 
+            <div> 
+                <button type="submit">Submit</button> 
+            </div> 
+        </form> 
+    </div> 
+  
+    <hr> 
+    <% data.forEach(function(d){ %>
+        <img src = "./uploads<%='d.image'%>" class="responsive-img">
+        
+    <% }) %> 
+    
+  
+    
