@@ -4,86 +4,46 @@ var express = require('express');
 var router = express.Router();
 var multer = require('multer');
 var path = require('path');
-var Book = require('../models/Book');
-var mongodb = require('mongodb');
-
+var Book = require('../models/book');
 var fs = require('fs');
+
+router.use(express.static(__dirname+"./public/"));
+
+var Storage= multer.diskStorage({
+    destination:"./public/uploads/",
+    filename:(req,file,cb)=>{
+      cb(null,file.fieldname+"_"+Date.now()+path.extname(file.originalname));
+    }
+  });
+
+  var upload = multer({
+    storage:Storage
+  }).single('file');
+  
+  
+  router.post('/book', upload,function(req, res) {
+    var imageFile=req.file.filename;
+    var success =req.file.filename+ " uploaded successfully";
+  
+    var newBook = new Book();
+    newBook.bookname = req.body.bookname;
+    newBook.author = req.body.author;
+    newBook.price = req.body.price;
+    newBook.dimension = req.body.dimension;
+    newBook.edition = req.body.edition;
+    newBook.language = req.body.language;
+    newBook.publisher = req.body.publisher;
+    newBook.description = req.body.description;
+    newBook.image = imageFile;
+    newBook.save(function(err,doc){
+        if(err) throw err;
+        res.render('book');
+    });
+});
 
 router.get('/book',(req,res)=>{
     res.render('book');
 });
-
-var storage = multer.diskStorage({
-    destination:function(req,file,cb){
-        cb(null,'./public/uploads/');
-    },
-    filename:function(req,file,cb){
-        cb(null,file.fieldname + '-' + Date.now() + path.extname(file.originalname));
-    }
-});
-// Init upload
-var upload = multer({
-    storage:storage,
-    // limits :{fileSize:1000000},
-    fileFilter:function(req,file,cb){
-        checkFileType(file,cb);
-    }
-}).single('myImage');
-
-function checkFileType(file,cb){
-    // allowed extension
-    const filetypes = /jpeg|jpg|png|gif/
-
-    // chaek extension
-
-    const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
-    // check mime 
-    const mimetype = filetypes.test(file.mimetype);
-    if(mimetype && extname){
-        return cb(null,true);
-    }else{
-        cb('Images Only Allowed.')
-    }
-
-
-}
-
-
-router.post('/book',(req,res,next)=>{
-
-    
-    upload(req,res,(err)=>{
-        if(err){
-            res.render('book',{
-                msg: err
-            })
-        }else{
-            if(req.file==undefined){
-                res.render('book',{
-                    msg:'No File selected.'
-                });
-            }else{
-                var newBook = new Book();
-                newBook.bookname = req.body.bookname;
-                newBook.arthur = req.body.arthur;
-                newBook.price = req.body.price;
-                
-                console.log(req.file.filename);
-                newBook.img = "uploads/"+req.file.filename;
-                newBook.save();
-                console.log(req.body);
-                res.render('book',{
-                    msg:'BooK Details Uploaded.',
-                    
-                });
-                
-            } 
-            
-            
-        }
-    });
-});
-
 
 router.get('/view',(req,res)=>{
     Book.find({},(err,books)=>{
@@ -91,9 +51,9 @@ router.get('/view',(req,res)=>{
             res.json(err);
         }else{
             res.render('viewbookDetails',{books});
-            console.log({books:books});
+            
         }
     });
-})
+});
 
 module.exports = router;

@@ -1,11 +1,15 @@
 var mongoose = require('mongoose');
 var BookSchema = new mongoose.Schema({
     bookname:String,
-    arthur: String,
+    author: String,
+    publisher:String,
     price: String,
-    date: { type: Date, default: Date.now },
-    img: String
-
+    edition:String,
+    language:String,
+    dimension:String,
+    description:String,
+    image:String,
+    date: { type: Date, default: Date.now }
 
 });
 

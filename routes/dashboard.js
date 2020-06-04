@@ -1,14 +1,15 @@
 var express = require("express");
 var router = express.Router();
 const User = require('../models/User');
+const {ensureAuthenticated} = require('../config/auth');
 
-router.get('/dashboard',(req,res)=>{
-    User.find(function(err, users) {
+router.get('/dashboard',ensureAuthenticated,(req,res)=>{
+    User.find({},function(err, users) {
         if (err){
             res.render('dashboard');
+
         }else{
-            console.log(users);
-            res.render("dashboard",{users:users,count:1})
+            res.render("dashboard",{users:users})
         }
     });
     

@@ -1,5 +1,7 @@
+<%- include('./partials/navbarLogout') %>
 </br>
 </br>
+
 <div class="contianer">
     <div class="col-sm-6">
         <%= typeof msg != 'undefined'?msg: '' %>
@@ -10,8 +12,30 @@
             
         </div>
         <div class="form-group">
-            <label for="exampleInputText1">Arthur Name</label>
-            <input type="text" class="form-control" id="arthur" name="arthur" aria-describedby="textHelp" placeholder="Enter arthur name">
+            <label for="exampleInputText1">Author Name</label>
+            <input type="text" class="form-control" id="author" name="author" aria-describedby="textHelp" placeholder="Enter author name">
+            
+        </div>
+        <div class="form-group">
+            <label for="exampleInputText1">Publisher</label>
+            <input type="text" class="form-control" id="publisher" name="publisher" aria-describedby="textHelp" placeholder="Enter author name">
+            
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputText1">Edition</label>
+            <input type="text" class="form-control" id="edition" name="edition" aria-describedby="textHelp" placeholder="Enter author name">
+            
+        </div>
+    
+        <div class="form-group">
+            <label for="exampleInputText1">Language</label>
+            <input type="text" class="form-control" id="language" name="language" aria-describedby="textHelp" placeholder="Enter author name">
+            
+        </div>
+        <div class="form-group">
+            <label for="exampleInputText1">Dimension</label>
+            <input type="text" class="form-control" id="dimension" name="dimension" aria-describedby="textHelp" placeholder="Enter author name">
             
         </div>
         <div class="form-group">
@@ -19,9 +43,15 @@
             <input type="text" class="form-control" id="price" name="price" aria-describedby="textHelp" placeholder="Enter price">
             
         </div>
+
+        <div class="form-group">
+            <label for="exampleInputText2">Book Description</label>
+            <input type="text" class="form-control" id="description" name="description" aria-describedby="textHelp" placeholder="Enter price">
+            
+        </div>
         <div class="form-group">
             <label for="exampleInputFile">Upload Photo</label>
-            <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" name="myImage">
+            <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" name="file">
             <!-- <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small> -->
         </br>
             <button type="submit" class="btn btn-primary">Submit</button>
@@ -30,9 +60,4 @@
     </div>
 
     <div class="col-sm-6"></div>
-
-    
-</br>
-<img src = "<%= typeof file !='undefined' ?file : '' %>"  class="responsive-img">
-<img src="<%='images/book.jpg'%>" />
 </div>

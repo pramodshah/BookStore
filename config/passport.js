@@ -24,7 +24,7 @@ module.exports = function(passport){
                         return done(null,false,{message:'Password Incorrect'});
                     }
                 })
-                console.log(err);
+                
             });
         })
     );
