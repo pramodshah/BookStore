@@ -4,7 +4,7 @@ var express = require('express');
 var router = express.Router();
 var multer = require('multer');
 var path = require('path');
-var Book = require('../models/book');
+var Book = require('../models/Book');
 var fs = require('fs');
 
 router.use(express.static(__dirname+"./public/"));
