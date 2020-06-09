@@ -15,6 +15,7 @@
 </br>
 </br>
 
+
 <div class="container">
   <div class="row">
     <div class="col-sm-4">
@@ -23,8 +24,9 @@
           CATEGORIES
         </button>
         <% categories.forEach(function(category){ %>
-          <button type="button" class="list-group-item list-group-item-action"><%= category.categoryName %></button>
-        <% }) %> 
+          <a href="/viewCategory/<%= category.categoryName%>"><button type="button" class="list-group-item list-group-item-action"><%= category.categoryName %></button></a>
+       <% }) %> 
+        
       </div>
     </div>
     <div class="col-sm-8">
@@ -33,23 +35,29 @@
         <h5>TOP CATEGORIES</h5>
       </strong>
     </br>
+
       <div class="row">
         
-        <div class="col-sm-4">
-          <a href="#">
-          <div class="card mb-3">
+
+  
+
+        <% books.forEach(function(book){ %>
+          <div class="col-sm-4">
+            <a href="/view/<%=book._id %>">
+            <div class="card mb-3">
+              
+              <img style="height: 250px; width: 100%; display: block; padding:10px;" src='/uploads/<%= book.image%>' alt="Card image">
+              <div class="card-body">
+                <p class="card-text"><%= book.bookname %></p>
+              </div>
             
-            <img style="height: 250px; width: 100%; display: block; padding:10px;" src="<%='./images/cover1.jpg' %>" alt="Card image">
-            <div class="card-body">
-              <p class="card-text">New way to explore books</p>
             </div>
-          
+          </a>
           </div>
-        </a>
-        </div>
+          <% }) %> 
         
 
-        <div class="col-sm-4">
+        <!-- <div class="col-sm-4">
           <a href="#">
           <div class="card mb-3">
             
@@ -164,7 +172,7 @@
         
 
       </div>
-          
+           -->
           
           
     </div>
@@ -203,7 +211,6 @@
 
   <hr class="my-4">
 
-  <!--Carousel Wrapper-->
   <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
 
     <!--Controls-->

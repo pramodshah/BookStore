@@ -11,7 +11,7 @@
             <div> 
                 <label for="image">Upload Image</label> 
                 <input type="file" id="image" 
-                       name="file" value="" required> 
+                       name="filename" value="" required> 
             </div> 
             <div> 
                 <button type="submit">Submit</button> 
@@ -20,10 +20,7 @@
     </div> 
   
     <hr> 
-    <% data.forEach(function(d){ %>
-        <img src = "./uploads<%='d.image'%>" class="responsive-img">
-        
-    <% }) %> 
+     
     
   
     

@@ -24,6 +24,7 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 require('./config/passport')(passport);
+// require('./config/adminPassport')(passport);
 
 // global variables
 app.use((req,res,next)=>{
@@ -109,14 +110,16 @@ app.set('views',path.join(__dirname,'views'));
 // routes
 app.use('/',require('./routes/index'));
 app.use('/users',require('./routes/users'));
+app.use('/',require('./routes/admin'));
 app.use('/',require('./routes/about'));
 app.use('/',require('./routes/contact'));
 app.use('/',require('./routes/features'));
 app.use('/',require('./routes/bookshelf'));
-app.use('/',require('./routes/book'));
-app.use('/',require('./routes/dashboard'));
 app.use('/',require('./routes/category'));
 app.use('/',require('./routes/gallery'));
+app.use('/',require('./routes/viewCategory'));
+
+
 
 
 

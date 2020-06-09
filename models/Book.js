@@ -9,6 +9,7 @@ var BookSchema = new mongoose.Schema({
     dimension:String,
     description:String,
     image:String,
+    category:String,
     date: { type: Date, default: Date.now }
 
 });

@@ -1,6 +1,6 @@
 var express = require('express');
 var router =  express.Router();
-const User = require('../models/User');
+const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 // login page
@@ -88,8 +88,9 @@ router.post('/register',(req,res)=>{
 // login handle 
 
 router.post('/login',(req,res,next)=>{
+    
     passport.authenticate('local',{
-        successRedirect:'/dashboard',
+        successRedirect:'/admin',
         failureRedirect:'/users/login',
         failureFlash:true
     })(req,res,next);
@@ -104,7 +105,7 @@ router.get('/logout',(req,res)=>{
     req.logout();
     
     req.flash('success_msg','You are logged out');
-    res.redirect('login'); 
+    res.redirect('/users/login'); 
 })
 
 

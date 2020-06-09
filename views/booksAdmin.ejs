@@ -1,0 +1,252 @@
+<%- include('./partials/navbarLogout') %>
+<link rel="stylesheet" type="text/css" href="../css/admin.css">
+<div class="page-wrapper chiller-theme toggled">
+  <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+    <i class="fas fa-bars"></i>
+  </a>
+  <nav id="sidebar" class="sidebar-wrapper">
+    <div class="sidebar-content">
+      <div class="sidebar-brand">
+        <a href="#">BookStore Dashboard</a>
+        
+      </div>
+      <div class="sidebar-header">
+        <div class="user-pic">
+          <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
+            alt="User picture">
+        </div>
+        <div class="user-info">
+          <span class="user-name">Pramod
+            <strong>Shah</strong>
+          </span>
+          <span class="user-role">Administrator</span>
+          <span class="user-status">
+            <i class="fa fa-circle"></i>
+            <span>Online</span>
+          </span>
+        </div>
+      </div>
+      <!-- sidebar-header  -->
+      <div class="sidebar-search">
+        <div>
+          <div class="input-group">
+            <input type="text" class="form-control search-menu" placeholder="Search...">
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- sidebar-search  -->
+      <div class="sidebar-menu">
+        <ul>
+          <li class="header-menu">
+            <span>General</span>
+          </li>
+          <li class="sidebar-dropdown">
+            <a href="/admin/users">
+              <i class="fa fa-tachometer-alt"></i>
+              <span>Users</span>
+              <!-- <span class="badge badge-pill badge-warning">New</span> -->
+            </a>
+            <!-- <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="#">Dashboard 1
+                    <span class="badge badge-pill badge-success">Pro</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">Dashboard 2</a>
+                </li>
+                <li>
+                  <a href="#">Dashboard 3</a>
+                </li>
+              </ul>
+            </div> -->
+          </li>
+          <li class="sidebar-dropdown">
+            <a href="/admin/books">
+              <i class="fa fa-shopping-cart"></i>
+              <span>Books</span>
+              <!-- <span class="badge badge-pill badge-danger">3</span> -->
+            </a>
+            <!-- <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="#">Products
+
+                  </a>
+                </li>
+                <li>
+                  <a href="#">Orders</a>
+                </li>
+                <li>
+                  <a href="#">Credit cart</a>
+                </li>
+              </ul>
+            </div> -->
+          </li>
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="far fa-gem"></i>
+              <span>Services</span>
+            </a>
+            <!-- <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="#">General</a>
+                </li>
+                <li>
+                  <a href="#">Panels</a>
+                </li>
+                <li>
+                  <a href="#">Tables</a>
+                </li>
+                <li>
+                  <a href="#">Icons</a>
+                </li>
+                <li>
+                  <a href="#">Forms</a>
+                </li>
+              </ul>
+            </div> -->
+          </li>
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="fa fa-chart-line"></i>
+              <span>Profile</span>
+            </a>
+            <!-- <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="#">Pie chart</a>
+                </li>
+                <li>
+                  <a href="#">Line chart</a>
+                </li>
+                <li>
+                  <a href="#">Bar chart</a>
+                </li>
+                <li>
+                  <a href="#">Histogram</a>
+                </li>
+              </ul>
+            </div> -->
+          </li>
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="fa fa-globe"></i>
+              <span>Contacts</span>
+            </a>
+            <!-- <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="#">Google maps</a>
+                </li>
+                <li>
+                  <a href="#">Open street map</a>
+                </li>
+              </ul>
+            </div> -->
+          </li>
+          <!-- <li class="header-menu">
+            <span>Extra</span>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-book"></i>
+              <span>Documentation</span>
+              <span class="badge badge-pill badge-primary">Beta</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-calendar"></i>
+              <span>Calendar</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-folder"></i>
+              <span>Examples</span>
+            </a>
+          </li> -->
+        </ul>
+      </div>
+      <!-- sidebar-menu  -->
+    </div>
+    <!-- sidebar-content  -->
+   
+   </nav>
+  <!-- sidebar-wrapper  -->
+  <main class="page-content">
+    <div class="container-fluid">
+      <h2>ADMIN PANEL</h2>
+      <hr>
+      <div class="container">
+        <div class="row">
+            <h1>Books</h1>
+         <!-- <table class="table table-striped table-primary"> -->
+         <table class="table">
+        
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Book Name</th>
+              <th>Author</th>
+              <th>Publisher</th>
+              <th>Language</th>
+              <th>Price</th>
+              <th>Dimension</th>
+              <th>Description</th>
+              <th>Image</th>
+              
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%if (books.length >0){ %>
+            <% books.forEach(function(book){ %>
+            <tr>
+              <td><%= book.category %></td>
+              <td><%= book.bookname %></td>
+              <td><%= book.author %></td>
+              <td><%= book.publisher %></td>
+              <td><%= book.language %></td>
+              <td><%= book.price %></td>
+              <td><%= book.dimension %></td>
+              <td><%= book.description %></td>
+              <td><%= book.image %></td>
+              
+
+              
+              
+              <td>
+                <a class="btn btn-success btn-xs" href="/add/<%= book._id %>"><i class="fa fa-plus"></i></a>
+                <a class="btn btn-primary btn-xs" href="/edit/<%= book._id %>"><i class="fa fa-edit"></i></a>
+                <a class="btn btn-danger btn-xs" href="/delete/<%= book._id %>"><i class="fa fa-trash"></i></a>
+      
+              </td>
+            </tr>
+            <% })}else{ %>
+              <tr>
+                  <td colspan="6">No Record Found</td>
+                  
+                </tr>
+              <% } %>
+          </tbody>
+        </table>
+      </div>
+      </div>
+      
+  </main>
+      
+  <!-- page-content" -->
+</div>
+    
+<!-- </body>
+
+</html> -->
