@@ -23,7 +23,7 @@ app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());
-// require('./config/passport')(passport);
+require('./config/passport')(passport);
 
 
 // global variables
@@ -109,7 +109,7 @@ app.set('views',path.join(__dirname,'views'));
  
 // routes
 app.use('/',require('./routes/index'));
-// app.use('/users',require('./routes/users'));
+app.use('/users',require('./routes/users'));
 app.use('/',require('./routes/admin'));
 app.use('/',require('./routes/about'));
 app.use('/',require('./routes/contact'));
