@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var User = require('../models/user');
+
 var {ensureAuthenticated} = require('../config/auth');
+var User = require('../models/User');
 
 
 router.get('/admin',ensureAuthenticated,(req,res)=>{
