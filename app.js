@@ -23,8 +23,8 @@ app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());
-require('./config/passport')(passport);
-// require('./config/adminPassport')(passport);
+// require('./config/passport')(passport);
+
 
 // global variables
 app.use((req,res,next)=>{
@@ -109,7 +109,7 @@ app.set('views',path.join(__dirname,'views'));
  
 // routes
 app.use('/',require('./routes/index'));
-app.use('/users',require('./routes/users'));
+// app.use('/users',require('./routes/users'));
 app.use('/',require('./routes/admin'));
 app.use('/',require('./routes/about'));
 app.use('/',require('./routes/contact'));
@@ -130,4 +130,4 @@ app.listen(PORT,function(req,res){
     console.log("Server running on port: 3000");
 });
 
-module.exports = db;
+// module.exports = db;
