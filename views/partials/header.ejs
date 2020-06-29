@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/"><img src="../images/logo3.png" height="90px" width="100%""></a>
+  <a class="navbar-brand" href="/"><img src="../images/logo2.png" height="100px" width="200px"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -25,23 +25,50 @@
         <a class="nav-link" href="/gallery">Gallery</a>
       </li>
     </ul>
-    <!-- <div class="form-inline my-2 my-lg-0">
-      <a class="form-control mr-sm-2" href="/users/Register">Register</a>
-      <a class="text-white bg-primary form-control mr-sm-2" href="/users/login">Login</a>
-    </div> -->
+    
 
 
     <div class="dropdown show">
       <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         My Account
       </a>
-    
+    <%if(login){%>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <a class="dropdown-item" href="/users/login">Login</a>
-        <a class="dropdown-item" href="/users/register">Register</a>
+        <a class="dropdown-item" href="#">Profile</a>
+        <a class="dropdown-item" href="#">Orders</a>
+        <a class="dropdown-item" href="/user/logout">Logout</a>
         
       </div>
+
+    <%}%>
+    
+    <%if(!login){%>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        
+        <a class="dropdown-item" href="/user/login">Login</a>
+        <a class="dropdown-item" href="/user/register">Register</a>
+        
+      </div>
+      
+    <%}%>
+     
+  
+     
     </div>
+
+
+    <div class="form-inline my-2 my-lg-0">
+      <% if(session.cart){%>
+        <a class="form-control mr-sm-2" href="/shopping-cart"><i class="fa fa-shopping-cart" aria-hidden="true"> <span><%=session.cart.totalQty%></span></i></a>
+      <%}%>
+
+      <%if(!session.cart){%>
+        <a class="form-control mr-sm-2" href="/shopping-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+      <%}%>
+      
+    </div>
+
+    
 
 
 

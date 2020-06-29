@@ -2,14 +2,14 @@ var mongoose = require('mongoose');
 var BookSchema = new mongoose.Schema({
     bookname:String,
     author: String,
-    publisher:String,
-    price: String,
+    price: Number,
+    dimension:String,
     edition:String,
     language:String,
-    dimension:String,
+    publisher:String,
     description:String,
-    image:String,
     category:String,
+    image:String,
     date: { type: Date, default: Date.now }
 
 });

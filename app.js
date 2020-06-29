@@ -6,21 +6,31 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var flash = require('connect-flash');
 var passport = require('passport');
-var multer = require('multer');
+var cookieparser = require('cookie-parser');
+var MongoStore = require('connect-mongo')(session);
 require('dotenv/config');
 
+var app = express();
 
 
-const app = express();
+app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({
+    extended: false
+}));
+
+app.use(cookieparser());
 
 app.use(session({
-    secret:'secret',
-    resave:true,
-    saveUninitialized:true
+    secret: 'secret',
+    resave: false,
+    saveUninitialized: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
+app.use(function(req, res, next) {
+   req.session.cookie.maxAge = 180 * 60 * 1000; // 3 hours
+    next();
+});
 app.use(flash());
-
-
 app.use(passport.initialize());
 app.use(passport.session());
 require('./config/passport')(passport);
@@ -34,10 +44,16 @@ app.use((req,res,next)=>{
     next();
 })
 
-app.use(bodyparser.urlencoded({
-    extended: false
-}));
-app.use(bodyparser.json());
+app.use((req, res, next)=> {
+    res.locals.login = req.isAuthenticated();
+    next();
+});
+app.use((req, res, next)=> {
+    res.locals.session = req.session;
+    next();
+});
+
+
 
 // Database connection method 1 on mongoDB Atlas
 
@@ -109,13 +125,12 @@ app.set('views',path.join(__dirname,'views'));
  
 // routes
 app.use('/',require('./routes/index'));
-app.use('/users',require('./routes/users'));
+app.use('/user',require('./routes/user'));
 app.use('/',require('./routes/admin'));
 app.use('/',require('./routes/about'));
 app.use('/',require('./routes/contact'));
 app.use('/',require('./routes/features'));
 app.use('/',require('./routes/bookshelf'));
-app.use('/',require('./routes/category'));
 app.use('/',require('./routes/gallery'));
 app.use('/',require('./routes/viewCategory'));
 

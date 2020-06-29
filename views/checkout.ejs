@@ -1,0 +1,62 @@
+<%- include('./partials/header') %>
+<%- include('./searchBox') %>
+
+<div class="container">
+    <%- include('./partials/messages') %>
+    <div class="row">
+        
+        <div class="col-sm-8">
+    
+    <h3>Checktout</h3>
+    <h4 class="badge badge-success" style="padding:15px;">Total Price: Rs.<%=total%></h4>
+
+    <form action="/checkout" method="post" id="checkout-form">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Name</label>
+            <input type="text" class="form-control"  id="name" placeholder="Enter Name">   
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Contact Number</label>
+            <input type="text" class="form-control"  id="contact-number" placeholder="Contact Number">   
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Address</label>
+            <input type="text" class="form-control" id="address" placeholder="Enter Address">
+            
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Card Number</label>
+            <input type="texty" class="form-control" id="card-numbebr" placeholder="Card Number">
+            
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <label for="exampleInputEmail1">Expiration Month</label>
+                <input type="text" class="form-control" id="card-expiry-month" placeholder="Expiration Month">
+            </div>
+            <div class="col">
+                <label for="exampleInputEmail1">Expiration Year</label>
+                <input type="text" class="form-control" id="card-expiry-year" placeholder="Expiration Year">
+            </div>
+            <div class="col">
+                <label for="exampleInputEmail1">CVC</label>
+                <input type="text" class="form-control" id="card-cvc" placeholder="CVC">
+            </div>
+        </div>
+            <hr>
+        <button type="submit" class="btn btn-primary">Buy now</button>
+
+        
+    
+
+    </form>
+
+ </div>
+</div>
+       
+</div>
+</br>
+</br>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script type="text/javascript" src="/js/checkout.js"></script>

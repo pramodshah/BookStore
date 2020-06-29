@@ -12,25 +12,30 @@
 </div> -->
 <%- include('./partials/header') %>
 <%- include('./searchBox') %>
+
+
 </br>
 </br>
 
 
 <div class="container">
+  <%- include('./partials/messages') %>
+  
   <div class="row">
+    
     <div class="col-sm-4">
       <div class="list-group">
         <button type="button" class="list-group-item list-group-item-action active">
           CATEGORIES
         </button>
         <% categories.forEach(function(category){ %>
-          <a href="/viewCategory/<%= category.categoryName%>"><button type="button" class="list-group-item list-group-item-action"><%= category.categoryName %></button></a>
+          <a href="/view-category/<%= category.categoryName%>"><button type="button" class="list-group-item list-group-item-action"><%= category.categoryName %></button></a>
        <% }) %> 
         
       </div>
     </div>
     <div class="col-sm-8">
-    </br>
+    
       <strong>
         <h5>TOP CATEGORIES</h5>
       </strong>
@@ -43,156 +48,35 @@
 
         <% books.forEach(function(book){ %>
           <div class="col-sm-4">
-            <a href="/view/<%=book._id %>">
+            <a href="/view/book/<%=book._id %>" style="text-decoration: none;">
             <div class="card mb-3">
               
-              <img style="height: 250px; width: 100%; display: block; padding:10px;" src='/uploads/<%= book.image%>' alt="Card image">
+              <img style="height: 300px; width: 100%; display: block; padding:10px;" src='/uploads/<%= book.image%>' alt="Card image">
               <div class="card-body">
-                <p class="card-text"><%= book.bookname %></p>
+                
+                <strong><p class="card-text" style="font-weight:bold;" onMouseOver="this.style.color='firebrick'"
+                  onMouseOut="this.style.color='black'"><%= book.bookname %></p></strong>
+                <P style="text-decoration:none; font-family: Arial, Helvetica, sans-serif; color:firebrick;">Rs. <%= book.price %></P>
+                
+
+                
+                
+
+               
               </div>
+              
+              
             
             </div>
           </a>
           </div>
           <% }) %> 
-        
-
-        <!-- <div class="col-sm-4">
-          <a href="#">
-          <div class="card mb-3">
-            
-            <img style="height: 250px; width: 100%; display: block; padding:10px;" src="<%='./images/cover2.jpg' %>" alt="Card image">
-            <div class="card-body">
-              <p class="card-text">New way to explore books</p>
-            </div>
-          
-          </div>
-          </a>
-        </div>
-
-        <div class="col-sm-4">
-          <a href="#">
-          <div class="card mb-3">
-            
-            <img style="height: 250px; width: 100%; display: block; padding:10px;" src="<%='./images/cover3.jpg' %>" alt="Card image">
-            <div class="card-body">
-              <p class="card-text">New way to explore books</p>
-            </div>
-          
-          </div>
-          </a>
-        </div>
-
-        <div class="col-sm-4">
-          <a href="#">
-            <div class="card mb-3">
-            
-              <img style="height: 250px; width: 100%; display: block; padding:10px;" src="<%='./images/cover4.jpg' %>" alt="Card image">
-              <div class="card-body">
-                <p class="card-text">New way to explore books</p>
-              </div>
-            
-            </div>
-          </a>
-        </div>
-        <div class="col-sm-4">
-          <a href="#">
-            <div class="card mb-3">
-            
-              <img style="height: 250px; width: 100%; display: block; padding:10px;" src="<%='./images/cover8.jpg' %>" alt="Card image">
-              <div class="card-body">
-                <p class="card-text">New way to explore books</p>
-              </div>
-            
-            </div>
-          </a>
-        </div>
-        <div class="col-sm-4">
-          <a href="#">
-            <div class="card mb-3">
-            
-              <img style="height: 250px; width: 100%; display: block; padding:10px;" src="<%='./images/cover9.jpg' %>" alt="Card image">
-              <div class="card-body">
-                <p class="card-text">New way to explore books</p>
-              </div>
-            
-            </div>
-          </a>
-        </div>
-
-      </div>
-    </br>
-   `</br>
-      <strong>
-        <h5>ROMANCE</h5>
-      </strong>
-    </br>
-
-      <div class="row">
-
-        <div class="col-sm-4">
-          <a href="#">
-            <div class="card mb-3">
-            
-              <img style="height: 250px; width: 100%; display: block; padding:10px;" src="<%='./images/cover5.jpg' %>" alt="Card image">
-              <div class="card-body">
-                <p class="card-text">New way to explore books</p>
-              </div>
-            
-            </div>
-          </a>
-        </div>
-
-        <div class="col-sm-4">
-          <a href="#">
-            <div class="card mb-3">
-            
-              <img style="height: 250px; width: 100%; display: block; padding:10px;" src="<%='./images/cover6.jpg' %>" alt="Card image">
-              <div class="card-body">
-                <p class="card-text">New way to explore books</p>
-              </div>
-            
-            </div>
-
-          </a>
-        </div>
-
-        <div class="col-sm-4">
-          <a href="#">
-            <div class="card mb-3">
-            
-              <img style="height: 250px; width: 100%; display: block; padding:10px;" src="<%='./images/cover7.jpg' %>" alt="Card image">
-              <div class="card-body">
-                <p class="card-text">New way to explore books</p>
-              </div>
-            
-            </div>
-          </a>
-        </div>
-        
-
-      </div>
-           -->
-          
           
     </div>
   </div>
 </div>
 
-<!-- <div class="col-sm-8">
-  <div class="card mb-3">
-    <h3 class="card-header">The idea hunter</h3>
-    <div class="card-body">
-      <h5 class="card-title">Reading is the best way to get idea</h5>
-      <h6 class="card-subtitle text-muted">Keep Reading</h6>
-    </div>
-    <img style="height: 200px; width: 100%; display: block;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTtVwtM4PWei-jP2w6zTq78E5ulKuMxYVMk6-hbRBtQ_xkiKhXO&usqp=CAU" alt="Card image">
-    <div class="card-body">
-      <p class="card-text">New way to explore books</p>
-    </div>
-  
-  </div>
-</div> -->
+
 
 
 
@@ -214,10 +98,14 @@
   <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
 
     <!--Controls-->
-    <div class="controls-top">
-      <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
-      <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fa fa-chevron-right"></i></a>
-    </div>
+    <a class="carousel-control-prev" href="#multi-item-example" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#multi-item-example" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
     <!--/.Controls-->
 
     <!--Indicators-->
@@ -238,7 +126,7 @@
           <div class="col-md-4">
             <div class="card mb-2">
               <img class="card-img-top" src="<%='./images/slide1.jpeg' %>"
-                alt="Card image cap">
+                alt="Card image cap" width="200" height="200">
               <div class="card-body">
                 <h4 class="card-title">Card title</h4>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
@@ -251,7 +139,7 @@
           <div class="col-md-4 clearfix d-none d-md-block">
             <div class="card mb-2">
               <img class="card-img-top" src="<%='./images/slide2.jpeg' %>"
-                alt="Card image cap">
+                alt="Card image cap" width="200" height="200">
               <div class="card-body">
                 <h4 class="card-title">Card title</h4>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
@@ -264,7 +152,7 @@
           <div class="col-md-4 clearfix d-none d-md-block">
             <div class="card mb-2">
               <img class="card-img-top" src="<%='./images/slide3.jpeg' %>"
-                alt="Card image cap">
+                alt="Card image cap" width="200" height="200">
               <div class="card-body">
                 <h4 class="card-title">Card title</h4>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
@@ -285,7 +173,7 @@
           <div class="col-md-4">
             <div class="card mb-2">
               <img class="card-img-top" src="<%='./images/slide4.jpeg' %>"
-                alt="Card image cap">
+                alt="Card image cap" width="200" height="200">
               <div class="card-body">
                 <h4 class="card-title">Card title</h4>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
@@ -298,7 +186,7 @@
           <div class="col-md-4 clearfix d-none d-md-block">
             <div class="card mb-2">
               <img class="card-img-top" src="<%='./images/slide5.jpeg' %>"
-                alt="Card image cap">
+                alt="Card image cap" width="200" height="200">
               <div class="card-body">
                 <h4 class="card-title">Card title</h4>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
@@ -311,7 +199,7 @@
           <div class="col-md-4 clearfix d-none d-md-block">
             <div class="card mb-2">
               <img class="card-img-top" src="<%='./images/slide6.jpeg' %>"
-                alt="Card image cap">
+                alt="Card image cap" width="200" height="200">
               <div class="card-body">
                 <h4 class="card-title">Card title</h4>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
@@ -332,7 +220,7 @@
           <div class="col-md-4">
             <div class="card mb-2">
               <img class="card-img-top" src="<%='./images/slide7.jpeg' %>"
-                alt="Card image cap">
+                alt="Card image cap" width="200" height="200">
               <div class="card-body">
                 <h4 class="card-title">Card title</h4>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
@@ -345,7 +233,7 @@
           <div class="col-md-4 clearfix d-none d-md-block">
             <div class="card mb-2">
               <img class="card-img-top" src="<%='./images/slide8.jpeg' %>"
-              alt="Card image cap">
+              alt="Card image cap" width="200" height="200">
               <div class="card-body">
                 <h4 class="card-title">Card title</h4>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
@@ -358,7 +246,7 @@
           <div class="col-md-4 clearfix d-none d-md-block">
             <div class="card mb-2">
               <img class="card-img-top" src="<%='./images/slide9.jpeg' %>"
-                alt="Card image cap">
+                alt="Card image cap" width="200" height="200">
               <div class="card-body">
                 <h4 class="card-title">Card title</h4>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the

@@ -1,4 +1,3 @@
-<%- include('./partials/navbarLogout') %>
 <link rel="stylesheet" type="text/css" href="../css/admin.css">
 <div class="page-wrapper chiller-theme toggled">
   <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
@@ -16,13 +15,13 @@
             alt="User picture">
         </div>
         <div class="user-info">
-          <span class="user-name">Pramod
+          <span class="user-name" style="color:white;">Pramod
             <strong>Shah</strong>
           </span>
           <span class="user-role">Administrator</span>
           <span class="user-status">
-            <i class="fa fa-circle"></i>
-            <span>Online</span>
+            
+            <a href="/" style="color:white;">Logout</a>
           </span>
         </div>
       </div>
@@ -186,6 +185,7 @@
     <div class="container-fluid">
       <h2>ADMIN PANEL</h2>
       <hr>
+      <%- include('./partials/messages') %>
       <div class="container">
         <div class="row">
             <h1>Books</h1>
@@ -194,15 +194,12 @@
         
           <thead>
             <tr>
-              <th>Category</th>
+             
               <th>Book Name</th>
               <th>Author</th>
               <th>Publisher</th>
               <th>Language</th>
-              <th>Price</th>
-              <th>Dimension</th>
-              <th>Description</th>
-              <th>Image</th>
+              
               
               <th>Action</th>
             </tr>
@@ -211,29 +208,26 @@
             <%if (books.length >0){ %>
             <% books.forEach(function(book){ %>
             <tr>
-              <td><%= book.category %></td>
+              
               <td><%= book.bookname %></td>
               <td><%= book.author %></td>
               <td><%= book.publisher %></td>
               <td><%= book.language %></td>
-              <td><%= book.price %></td>
-              <td><%= book.dimension %></td>
-              <td><%= book.description %></td>
-              <td><%= book.image %></td>
-              
-
               
               
               <td>
-                <a class="btn btn-success btn-xs" href="/add/<%= book._id %>"><i class="fa fa-plus"></i></a>
-                <a class="btn btn-primary btn-xs" href="/edit/<%= book._id %>"><i class="fa fa-edit"></i></a>
-                <a class="btn btn-danger btn-xs" href="/delete/<%= book._id %>"><i class="fa fa-trash"></i></a>
+                <a class="btn btn-secondary btn-xs" href="/view/book/<%= book._id %>"><i class="fa fa-eye"></i></a>
+                <a class="btn btn-success btn-xs" href="/addbook"><i class="fa fa-plus"></i></a>
+                <a class="btn btn-primary btn-xs" href="/edit/book/<%= book._id %>"><i class="fa fa-edit"></i></a>
+                <a class="btn btn-danger btn-xs" href="/delete/book/<%= book._id %>"><i class="fa fa-trash"></i></a>
       
               </td>
             </tr>
             <% })}else{ %>
               <tr>
                   <td colspan="6">No Record Found</td>
+                  <td colspan="6"><a href="/addbook"><button btn.btn-primary>Add Book</button></a></td>
+                  
                   
                 </tr>
               <% } %>

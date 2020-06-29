@@ -1,20 +1,22 @@
-<%- include('./partials/navbarLogout') %>
+<%- include('./partials/header') %>
 </br>
 </br>
 
-<div class="contianer">
+<div class="container">
+  <div class="row">
     <%- include('./partials/messages') %>
-        <form action="/category" method="POST">
-            <fieldset>
-              <legend>Add Categories</legend> 
+        <form action="/addcategory" method="POST">
+            <legend>Add Categories</legend> 
               <div class="form-group">
                 <label for="category"></label>
                 <input type="text" class="form-control" id="category" aria-describedby="emailHelp" name="categoryName" placeholder="Enter category name">
-                
               </div>
             </br>
             <button type="submit" class="btn btn-primary">Submit</button>
-              </fieldset>
+              
           </form>
+
+  </div>
+    
     
 </div>

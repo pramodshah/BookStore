@@ -1,4 +1,4 @@
-<%- include('./partials/navbarLogin') %>
+<%- include('./partials/header') %>
 <%- include('./searchBox') %>
 
   <div class="row">
@@ -9,7 +9,7 @@
           <div class="card card-body">
             <h1 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i>  Login</h1>
             <%- include('./partials/messages') %>
-            <form action="/users/login" method="POST">
+            <form action="/user/login" method="POST">
               <div class="form-group">
                 
                 <label for="email">Email</label>
@@ -31,10 +31,11 @@
                   placeholder="Enter Password"
                 />
               </div>
+              <input type="hidden" name="_csrf" value=<%=csrfToken%>>
               <button type="submit" class="btn btn-primary btn-block">Login</button>
             </form>
             <p class="lead mt-4">
-              No Account? <a href="/users/register">Register</a>
+              No Account? <a href="/user/register">Register</a>
             </p>
           </div>
         </div>

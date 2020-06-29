@@ -1,16 +1,16 @@
-<%- include('./partials/navbarLogout') %>
+<%- include('./partials/header') %>
 </br>
 </br>
 <div class="container">
     <div class="row">
-        <% categories.forEach(function(category){ %>
+        <% books.forEach(function(book){ %>
             <div class="col-sm-3">
-              <a href="/view/<%=category._id %>">
+              <a href="/view/book/<%=book._id %>">
               <div class="card mb-3">
                 
-                <img style="height: 300px; width: 100%; display: block; padding:10px;" src='/uploads/<%= category.image%>' alt="Card image">
+                <img style="height: 300px; width: 100%; display: block; padding:10px;" src='/uploads/<%= book.image%>' alt="Card image">
                 <div class="card-body">
-                  <p class="card-text"><%= category.bookname %></p>
+                  <p class="card-text"><%= book.bookname %></p>
                 </div>
               
               </div>
