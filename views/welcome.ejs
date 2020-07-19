@@ -50,10 +50,10 @@
         <% books.forEach(function(book){ %>
           <div class="col-sm-4">
           <a href="/view/book/<%=book._id %>" style="font-size: 15px;">
-            <img style="height: 300px; width: 100%; display: block; padding:7px;" src='/uploads/<%= book.image%>' alt="Card image">
+            <img style="height: 250px; width: 170px; display: block; padding:7px;" src='/uploads/<%= book.image%>' alt="Card image">
             
-            <strong><p class="card-text"><%= book.bookname %></p></strong>
-            <strong><p class="card-text" style="padding-bottom: 25px;">Rs.<%= book.price %></p></strong>
+            <strong><p class="card-text" style="font-size: 13px;"><%= book.bookname %></p></strong>
+            <strong><p class="card-text" style="padding-bottom: 25px;font-size: 13px;">Rs.<%= book.price %></p></strong>
           </a>
           </div>
         <% }) %> 
