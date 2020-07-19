@@ -12,6 +12,7 @@
 </div> -->
 <%- include('./partials/header') %>
 <%- include('./searchBox') %>
+<link stylesheet="">
 
 
 </br>
@@ -51,7 +52,8 @@
           <a href="/view/book/<%=book._id %>" style="font-size: 15px;">
             <img style="height: 300px; width: 100%; display: block; padding:7px;" src='/uploads/<%= book.image%>' alt="Card image">
             
-            <strong><p class="card-text" style="padding: 5px;"><%= book.bookname %></p></strong>
+            <strong><p class="card-text"><%= book.bookname %></p></strong>
+            <strong><p class="card-text" style="padding-bottom: 25px;">Rs.<%= book.price %></p></strong>
           </a>
           </div>
         <% }) %> 

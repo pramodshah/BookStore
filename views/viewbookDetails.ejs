@@ -5,25 +5,25 @@
 <div class="container">
       
       
-     
+     <P>Product Details</P>
       
    
 </div>
 
 <div class="container">
       <div class="card">
-            <div class="container-fliud">
+            <div class="container-fluid">
                   <div class="wrapper row">
                         <div class="preview col-md-6">
                               
                               <div class="preview-pic tab-content">
-                                <div class="tab-pane active" id="pic-1"><img src='/uploads/<%= book.image%>' style="height:350px;width:250px"/></div>
+                                <div class="tab-pane active" id="pic-1"><img src='/uploads/<%= book.image%>' style="height:300px;width:200px"/></div>
                               </div>
                              
                               
                         </div>
                         <div class="details col-md-6">
-                              <h3 class="product-title" style="padding-top:30px; font-family: Arial, Helvetica, sans-serif;"><%= book.bookname %></h3>
+                              <h4 class="product-title" style="padding-top:30px; font-family: Arial, Helvetica, sans-serif;"><%= book.bookname %></h3>
                               <div class="rating">
                                     <div class="stars">
                                           <span class="fa fa-star checked"></span>
@@ -38,10 +38,6 @@
                               <p class="book-price" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">current price: Rs. <span> <%= book.price %></span></p>
                               <p class="vote"><strong>91%</strong> of buyers enjoyed this book! <strong>(87 votes)</strong></p>
                               
-                              <h6 class="book-author" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Author :<%= book.author %></h6>
-                              <p class="book-description" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Description: <%=book.description %></p>
-                              <h6 class="book-dimension  " style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Dimension:<%=book.dimension%></h6>
-                              
                               <div class="action">
                                     <a href="/add-to-cart/<%=book._id%>"><button class="add-to-cart btn btn-default" type="button">Add to cart</button></a>
                               </div>
@@ -50,6 +46,21 @@
                   </div>
             </div>
       </div>
+</br>
+      <h4>Product Details</h4>
+      <p class="book-description" style="">Description: <%=book.description %></p>
+      <p class="book-dimension  " style="">Dimension:<%=book.dimension%></p>
+      <p class="book-category  " style="">Category:<%=book.category%></p>
+      <p class="book-edition  " style="">Edition:<%=book.edition%></p> 
+      <p class="book-author  " style="">Author:<%=book.author%></p>   
 </div>
+
+</br>
+</br>
+</br>
+</br>
+
+
+
 
 
