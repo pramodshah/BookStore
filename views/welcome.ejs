@@ -41,36 +41,19 @@
       </strong>
     </br>
 
-      <div class="row">
+    <div class="row">
         
 
   
 
         <% books.forEach(function(book){ %>
           <div class="col-sm-4">
-            <a href="/view/book/<%=book._id %>" style="text-decoration: none;">
-            <div class="card mb-3">
-              
-              <img style="height: 300px; width: 100%; display: block; padding:10px;" src='/uploads/<%= book.image%>' alt="Card image">
-              <div class="card-body">
-                
-                <strong><p class="card-text" style="font-weight:bold;" onMouseOver="this.style.color='firebrick'"
-                  onMouseOut="this.style.color='black'"><%= book.bookname %></p></strong>
-                <P style="text-decoration:none; font-family: Arial, Helvetica, sans-serif; color:firebrick;">Rs. <%= book.price %></P>
-                
-
-                
-                
-
-               
-              </div>
-              
-              
-            
-            </div>
+          <a href="/view/book/<%=book._id %>" style="font-size: 15px;">
+            <img style="height: 300px; width: 100%; display: block; padding:7px;" src='/uploads/<%= book.image%>' alt="Card image">
+            <strong><p class="card-text" style="padding: 5px;"><%= book.bookname %></p></strong>
           </a>
           </div>
-          <% }) %> 
+        <% }) %> 
           
     </div>
   </div>
