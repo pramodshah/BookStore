@@ -4,7 +4,8 @@ var router = express.Router();
 var {ensureAuthenticated} = require('../config/auth');
 var User = require('../models/User');
 var Book = require('../models/Book');
-var Category = require('../models/category')
+var Category = require('../models/category');
+var Contact = require('../models/contact');
 
 
 router.get('/admin',(req,res)=>{
@@ -45,11 +46,29 @@ router.post("/addcategory",function(req,res){
         }else{
             console.log(err);
         }
-    })
+    });
     
 
 
+});
+
+router.get('/admin/contacts',(req,res)=>{
+    Contact.find({},function(err,contacts){
+        if(err) throw err;
+        res.render("contactsAdmin",{contacts:contacts});
+
+    })
 })
+
+router.get('/delete/contact/:id',(req,res)=>{
+    var id = req.params.id;
+    Book.findByIdAndDelete(id,function(err){
+        if(err) throw err;
+        res.redirect('/admin/contacts');
+
+    });
+    
+});
 
 
 
