@@ -1,0 +1,16 @@
+#footer {
+    height: 60px;
+    margin-top:50px;
+    padding-top:20px;
+    padding-bottom:20px;
+}
+#footer {
+    background-color:#414141;
+  }
+  
+  #footer a {
+    color:#efefef;
+}
+#footer > .container {
+  
+}
