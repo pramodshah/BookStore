@@ -326,8 +326,8 @@
         <p><%= book.bookname %></p>
         <img src='/uploads/<%= book.image%>' alt="dsadas" width="170px" height="230px"/>
         <span style="padding-top:30px;">
-          <a href="#" class="btn btn-dark">Add To Cart</a>
-      <a href="#" class="btn btn-dark">Deatil</a>
+          <a href="/add-to-cart/<%=book._id%>" class="btn btn-dark">Add To Cart</a>
+      <a href="/view/book/<%=book._id %>" class="btn btn-dark">Deatil</a>
         </span>
       
         </div>
