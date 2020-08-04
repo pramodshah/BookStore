@@ -1,18 +1,47 @@
-.ml12 {
-    font-weight: 200;
-    font-size: 1.3em;
-    text-align: center;
-    color: white;
-    
-    padding:4px;
+  .example1 {
+    height: 40px;	
+    overflow: hidden;
+    position: relative;
     border: 0.5px solid #F2608F;
-    border-radius: 20px;;
-    /* background-color:#1a1a1a; */
+    border-radius: 20px;
     background-color:#F2608F;
     
-  }
+   }
+
+   .example1 h3 {
+    font-size: 1.6em;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    line-height: 40px;
+    text-align: center;
   
-  .ml12 .letter {
-    display: inline-block;
-    line-height: 0.5em;
-  }
+    -moz-transform:translateX(100%);
+    -webkit-transform:translateX(100%);	
+    transform:translateX(100%);
+   
+    -moz-animation: example1 15s linear infinite;
+    -webkit-animation: example1 15s linear infinite;
+    animation: example1 15s linear infinite;
+   }
+   
+   @-moz-keyframes example1 {
+    0%   { -moz-transform: translateX(100%); }
+    100% { -moz-transform: translateX(-100%); }
+   }
+   @-webkit-keyframes example1 {
+    0%   { -webkit-transform: translateX(100%); }
+    100% { -webkit-transform: translateX(-100%); }
+   }
+   @keyframes example1 {
+    0%   { 
+    -moz-transform: translateX(100%); 
+    -webkit-transform: translateX(100%); 
+    transform: translateX(100%); 		
+    }
+    100% { 
+    -moz-transform: translateX(-100%); 
+    -webkit-transform: translateX(-100%); 
+    }
+   }

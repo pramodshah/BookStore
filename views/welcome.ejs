@@ -27,21 +27,21 @@
         <img src="<%='./images/slide4.jpeg' %>" class="d-block w-100" alt="..." height="300">
         <div class="carousel-caption d-none d-md-block">
           <!-- <h5 style="font: bolder;">A book is a gift you can open again and again.</h5> -->
-          <p style="font-size:30px;color:#F2608F;font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Once you learn to read, you will be forever free.</p>
+          <p style="font-size:30px;color:crimson;font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Once you learn to read, you will be forever free.</p>
         </div>
       </div>
       <div class="carousel-item">
         <img src="<%='./images/slide6.jpeg' %>" class="d-block w-100" alt="..." height="300">
         <div class="carousel-caption d-none d-md-block">
           <h5 style="color:black;font: bolder;">Reading is the best for getting knowledge</h5>
-          <p style="font-size:30px;color:#F2608F;font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Keep Reading.</p>
+          <p style="font-size:30px;color:crimson;font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Keep Reading.</p>
         </div>
       </div>
       <div class="carousel-item">
         <img src="<%='./images/slide8.jpeg' %>" class="d-block w-100" alt="..." height="300">
         <div class="carousel-caption d-none d-md-block">
           <h5 style="color:black;font: bolder;">Hand Picked books to your doors.</h5>
-          <p style="font-size:30px;color:#F2608F;font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Books are a uniquely portable magic</p>
+          <p style="font-size:30px;color:crimson;font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Books are a uniquely portable magic</p>
         </div>
       </div>
       
@@ -320,8 +320,9 @@
         <img src='/uploads/<%= book.image%>' alt="dsadas" width="170px" height="230px" />
         <p style="font-size: 20px; font: bolder;"><%= book.bookname %></p></a>
         <span> by <%= book.author %></span>
-       
-        <div class="offer" >Extra 5% Off. Cart value Rs 500</div>
+        
+        <span class="pull-right" style="font-weight:900;color:#F2608F">$<%= book.price %>
+        <div class="offer">Extra 5% Off. Cart value Rs 500</div>
         <div class="detail">
         <p><%= book.bookname %></p>
         <img src='/uploads/<%= book.image%>' alt="dsadas" width="170px" height="230px"/>
