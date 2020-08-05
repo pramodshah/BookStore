@@ -264,8 +264,13 @@ router.post('/checkout',(req,res)=>{
 
     router.get('/order',(req,res)=>{
         res.render('order')
-    })
-})
+    });
+});
+
+
+router.get('/view_all',(req,res)=>{
+    res.render('view_all')
+});
 
 
 module.exports = router;
