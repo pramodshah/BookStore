@@ -169,8 +169,7 @@ router.post('/updatebook',upload,(req,res)=>{
     
 
     
-    Book.findB
-     yIdAndUpdate(req.body.id,BookData,function(err,book){
+    Book.findByIdAndUpdate(req.body.id,BookData,function(err,book){
         if(err) throw err;
         res.redirect('/admin/books');
     })
